@@ -13,14 +13,15 @@ namespace Domain.Entities
         public string TitleEN { get; set; }
         public string Description { get; set; }
         public DateTime PremiereDate { get; set; }
-        public int Length { get; set; }
+        public Int16 Length { get; set; }
         public string Slogan { get; set; }
         public string RatingAgeLimit { get; set; }
-        public string Budget { get; set; }
+        public int Budget { get; set; }
         public int KPID { get; set; }
-        public double RatingKP { get; set; }
-        public double RatingIMDB { get; set; }
-        public double Rating { get; set; }
+        public decimal RatingKP { get; set; }
+        public decimal RatingIMDB { get; set; }
+        public int RatingMetascore { get; set; }
+        public decimal Rating { get; set; }
         public int TotalViews { get; set; }
     }
 }

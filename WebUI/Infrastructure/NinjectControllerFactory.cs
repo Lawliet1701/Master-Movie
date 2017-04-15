@@ -1,4 +1,5 @@
 ﻿using Domain.Abstract;
+using Domain.Concrete;
 using Domain.Entities;
 using Moq;
 using Ninject;
@@ -27,13 +28,7 @@ namespace WebUI.Infrastructure
 
         private void AddBindings()
         {
-            Mock<IMovieRepository> mock = new Mock<IMovieRepository>();
-            mock.Setup(m => m.Movies).Returns(new List<Movie> {
-                new Movie { Title = "Аватар", Description = "Bla-Bla-Bla" },
-                new Movie { Title = "Город Грехов", Description = "Bla-Bla-Bla" },
-                new Movie { Title = "Матрица", Description = "Bla-Bla-Bla" }
-                }.AsQueryable());
-            ninjectKernel.Bind<IMovieRepository>().ToConstant(mock.Object);
+            ninjectKernel.Bind<IMovieRepository>().To<EFMovieRepository>();
         }
     }
 }
