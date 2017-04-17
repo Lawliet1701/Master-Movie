@@ -1,7 +1,13 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: Cambria, Georgia, "Times New Roman";
+    margin: 0;
 }
+
+#header .title, .item h3, .item h4, .pager a {
+    font: bold 1em "Arial Narrow", "Franklin Gothic Medium", Arial;
+} 
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -21,4 +27,59 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#content{
+    border-left: 2px solid gray;
+    margin-left: 3em;
+    padding: 1em;
+}
+
+.item{
+    border-top: 1px dotted gray;
+    padding-top: .7em;
+    margin-bottom: .7em;
+}
+
+.item:first-child{
+    border-top: none;
+    padding-top: 0;
+}
+
+.item h3{
+    font-size: 1.3em;
+    margin: 0 0 .25em 0;
+}
+
+.item h4{
+    font-size: 1.1em;
+    margin: .4em 0 0.25em 0;
+}
+
+.item p {
+    font-size: 1.1em;
+    font-family: Georgia, "Times New Roman";
+}
+
+.pager{
+    text-align: center;
+    border-top: 2px solid silver;
+    padding: .5em 0 0 0;
+    margin-top: 1em;
+}
+
+.pager a{
+    font-size: 1.1em;
+    color: #666;
+    text-decoration: none;
+    padding: 0 .4em 0 .4em;
+}
+
+.pager a:hover{
+    background-color: silver;
+}
+
+.pager a.selected {
+    background-color: #353535;
+    color: white;
 }
