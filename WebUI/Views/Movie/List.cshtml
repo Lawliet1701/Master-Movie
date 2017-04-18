@@ -4,12 +4,21 @@
     ViewBag.Title = "Movies";
 }
 
-@foreach (var p in Model.Movies)
-{
-    Html.RenderPartial("MovieSummary", p);
-}
+
+<div id="categories">
+    @{ Html.RenderAction("Menu", "Nav");}
+</div>
+<div id="content" class="container body-content">
+    @foreach (var p in Model.Movies)
+    {
+        Html.RenderPartial("MovieSummary", p);
+    }
 
     <div class="pager">
-        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentYearCategory}))
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentYearCategory }))
     </div>
+</div>
+
+
+
 
