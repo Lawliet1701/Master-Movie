@@ -18,11 +18,12 @@ namespace WebUI.Controllers
             this.repository = movieRepository;
         }
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category, int page = 1)
         {
             MoviesListViewModel model = new MoviesListViewModel
             {
                 Movies = repository.Movies
+                .Where(p => category == null || p.PremiereDate.Year.ToString() == category)
                 .OrderBy(p => p.MovieID)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
@@ -30,8 +31,11 @@ namespace WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Movies.Count()
-                }
+                    TotalItems = category == null ?
+                        repository.Movies.Count() :
+                        repository.Movies.Where(e => e.PremiereDate.Year.ToString() == category).Count()
+                },
+                CurrentYearCategory = category
             };
 
             return View(model);

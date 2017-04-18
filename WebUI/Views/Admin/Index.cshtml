@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Domain.Entities.Movie>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>All Movies</h2>
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Premiere Date</th>
+        <th class="NumericCol">Length</th>
+        <th class="NumericCol">Age Limit</th>
+        <th class="NumericCol">Budget</th>
+        <th class="NumericCol">KP</th>
+        <th class="NumericCol">IMDB</th>
+        <th class="NumericCol">MS</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.MovieID</td>
+        <td>@Html.ActionLink(item.Title, "Edit", new { item.MovieID })</td>
+        <td>@item.PremiereDate.ToShortDateString()</td>
+        <td class="NumericCol">@item.Length</td>
+        <td class="NumericCol">@item.RatingAgeLimit</td>
+        <td class="NumericCol">$@item.Budget</td>
+        <td class="NumericCol">@item.RatingKP</td>
+        <td class="NumericCol">@item.RatingIMDB</td>
+        <td class="NumericCol">@item.RatingMetascore</td>
+        <td>
+            @using (Html.BeginForm("Delete", "Admin"))
+            {
+                @Html.Hidden("MovieID", item.MovieID)
+                <input type="submit" value="Delete"/>
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>@Html.ActionLink("Add a new movie", "Create")</p>

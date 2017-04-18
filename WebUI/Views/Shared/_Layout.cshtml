@@ -22,12 +22,14 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "List", "Movie")</li>
-                    <li>@Html.ActionLink("About", "List", "Movie")</li>
-                    <li>@Html.ActionLink("Contact", "List", "Movie")</li>
+                    <li>@Html.ActionLink("Admin Panel", "Index", "Admin")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
+    </div>
+    <div id="categories">
+        @{ Html.RenderAction("Menu", "Nav");}
     </div>
     <div id="content" class="container body-content">
         @RenderBody()
