@@ -1,4 +1,5 @@
 ﻿using Domain.Abstract;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,19 @@ namespace WebUI.Controllers
             };
 
             return View(model);
+        }
+
+        public FileContentResult GetImage(int movieId)
+        {
+            Movie movie = repository.Movies.FirstOrDefault(p => p.MovieID == movieId);
+            if (movie != null)
+            {
+                return File(movie.ImageData, movie.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

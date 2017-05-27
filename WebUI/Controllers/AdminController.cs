@@ -31,10 +31,16 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Movie movie)
+        public ActionResult Edit(Movie movie, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    movie.ImageMimeType = image.ContentType;
+                    movie.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(movie.ImageData, 0, image.ContentLength);
+                }
                 repository.SaveMovie(movie);
                 TempData["message"] = string.Format("{0} has been saved", movie.Title);
                 return RedirectToAction("Index");

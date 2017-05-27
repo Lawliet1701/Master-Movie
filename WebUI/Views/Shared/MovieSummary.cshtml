@@ -1,6 +1,12 @@
 ﻿@model Domain.Entities.Movie
 
 <div class="item">
+    @if (Model.ImageData != null)
+    {
+        <div style="float: left; margin-right: 20px">
+            <img width="150" height="300" src="@Url.Action("GetImage", "Movie", new { Model.MovieID })" />
+        </div>
+    }
     <h3>@Model.Title</h3>
     <h4>@Model.TitleEN</h4>
     <p>@Model.Description</p>

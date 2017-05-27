@@ -62,5 +62,10 @@ namespace Domain.Entities
 
         [HiddenInput(DisplayValue = false)]
         public int TotalViews { get; set; }
+
+        public byte[] ImageData { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public string ImageMimeType { get; set; }
     }
 }
