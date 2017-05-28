@@ -38,7 +38,6 @@ namespace Domain.Concrete
                     dbEntry.KPID = movie.KPID;
                     dbEntry.RatingKP = movie.RatingKP;
                     dbEntry.RatingIMDB = movie.RatingIMDB;
-                    dbEntry.RatingMetascore = movie.RatingMetascore;
                     dbEntry.ImageData = movie.ImageData;
                     dbEntry.ImageMimeType = movie.ImageMimeType;
                 }

@@ -53,10 +53,6 @@ namespace Domain.Entities
         [Range(0.1, double.MaxValue, ErrorMessage = "Please enter a positive rating")]
         public decimal RatingIMDB { get; set; }
 
-        [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Please enter a positive rating")]
-        public int RatingMetascore { get; set; }
-
         [HiddenInput(DisplayValue = false)]
         public decimal Rating { get; set; }
 
