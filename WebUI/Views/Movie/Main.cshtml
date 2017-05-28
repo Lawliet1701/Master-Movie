@@ -1,0 +1,18 @@
+﻿@model WebUI.Models.MoviesListViewModel
+
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@foreach (var p in Model.Movies)
+{
+    Html.RenderPartial("MovieSummary", p);
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/star-rating")
+
+

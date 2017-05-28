@@ -1,0 +1,53 @@
+﻿.Movie {
+    margin-top: 20px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.MovieBlock div:hover {
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.4);*/
+}
+
+.ImgSet {
+    /* float: left; */
+}
+
+.imgBlock {
+    overflow: hidden;
+    /*width: auto;
+    height: 280px;*/
+}
+
+.MovieTitleImg {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.MovieInfo {
+    text-transform: uppercase;
+    background-color: #3984ef;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px 15px 5px;
+    margin: 0;
+}
+
+.MovieInfo p {
+    padding:0px;
+    margin: 0px;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.textStyle {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

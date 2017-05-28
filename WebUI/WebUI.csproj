@@ -219,6 +219,8 @@
     <Content Include="Content\Admin.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MovieSummary.css" />
+    <Content Include="Content\star-rating.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -237,9 +239,74 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\BSR\.github\CONTRIBUTING.md" />
+    <Content Include="Scripts\BSR\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="Scripts\BSR\.github\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="Scripts\BSR\.git\config" />
+    <Content Include="Scripts\BSR\.git\description" />
+    <Content Include="Scripts\BSR\.git\HEAD" />
+    <Content Include="Scripts\BSR\.git\hooks\applypatch-msg.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\commit-msg.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\post-update.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\pre-applypatch.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\pre-commit.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\pre-push.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\pre-rebase.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\pre-receive.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\prepare-commit-msg.sample" />
+    <Content Include="Scripts\BSR\.git\hooks\update.sample" />
+    <Content Include="Scripts\BSR\.git\index" />
+    <Content Include="Scripts\BSR\.git\info\exclude" />
+    <Content Include="Scripts\BSR\.git\logs\HEAD" />
+    <Content Include="Scripts\BSR\.git\logs\refs\heads\master" />
+    <Content Include="Scripts\BSR\.git\logs\refs\remotes\origin\HEAD" />
+    <Content Include="Scripts\BSR\.git\objects\pack\pack-d7c7c6f899b35542b9cd07ba5fff6246d44f8669.idx" />
+    <Content Include="Scripts\BSR\.git\objects\pack\pack-d7c7c6f899b35542b9cd07ba5fff6246d44f8669.pack" />
+    <Content Include="Scripts\BSR\.git\packed-refs" />
+    <Content Include="Scripts\BSR\.git\refs\heads\master" />
+    <Content Include="Scripts\BSR\.git\refs\remotes\origin\HEAD" />
+    <Content Include="Scripts\BSR\bower.json" />
+    <Content Include="Scripts\BSR\CHANGE.md" />
+    <Content Include="Scripts\BSR\composer.json" />
+    <Content Include="Scripts\BSR\LICENSE.md" />
+    <Content Include="Scripts\BSR\package.json" />
+    <Content Include="Scripts\BSR\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\BSR\css\star-rating.css" />
+    <Content Include="Scripts\BSR\css\star-rating.min.css" />
+    <Content Include="Scripts\BSR\examples\index.html" />
+    <Content Include="Scripts\BSR\examples\sample.html" />
+    <Content Include="Scripts\BSR\img\loading.gif" />
+    <Content Include="Scripts\BSR\js\locales\ar.js" />
+    <Content Include="Scripts\BSR\js\locales\de.js" />
+    <Content Include="Scripts\BSR\js\locales\es.js" />
+    <Content Include="Scripts\BSR\js\locales\fa.js" />
+    <Content Include="Scripts\BSR\js\locales\fr.js" />
+    <Content Include="Scripts\BSR\js\locales\it.js" />
+    <Content Include="Scripts\BSR\js\locales\LANG.js" />
+    <Content Include="Scripts\BSR\js\locales\pl.js" />
+    <Content Include="Scripts\BSR\js\locales\pt-BR.js" />
+    <Content Include="Scripts\BSR\js\locales\ro.js" />
+    <Content Include="Scripts\BSR\js\locales\ru.js" />
+    <Content Include="Scripts\BSR\js\locales\ua.js" />
+    <Content Include="Scripts\BSR\js\locales\zh.js" />
+    <Content Include="Scripts\BSR\js\star-rating.js" />
+    <Content Include="Scripts\BSR\js\star-rating.min.js" />
+    <Content Include="Scripts\BSR\themes\krajee-fa\theme.css" />
+    <Content Include="Scripts\BSR\themes\krajee-fa\theme.js" />
+    <Content Include="Scripts\BSR\themes\krajee-fa\theme.min.css" />
+    <Content Include="Scripts\BSR\themes\krajee-fa\theme.min.js" />
+    <Content Include="Scripts\BSR\themes\krajee-svg\theme.css" />
+    <Content Include="Scripts\BSR\themes\krajee-svg\theme.js" />
+    <Content Include="Scripts\BSR\themes\krajee-svg\theme.min.css" />
+    <Content Include="Scripts\BSR\themes\krajee-svg\theme.min.js" />
+    <Content Include="Scripts\BSR\themes\krajee-uni\theme.css" />
+    <Content Include="Scripts\BSR\themes\krajee-uni\theme.js" />
+    <Content Include="Scripts\BSR\themes\krajee-uni\theme.min.css" />
+    <Content Include="Scripts\BSR\themes\krajee-uni\theme.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -248,6 +315,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\star-rating.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -285,9 +353,13 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Movie\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Angular\controller\" />
+    <Folder Include="Scripts\BSR\.git\objects\info\" />
+    <Folder Include="Scripts\BSR\.git\refs\tags\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -303,9 +375,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

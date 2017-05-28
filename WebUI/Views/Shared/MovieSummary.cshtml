@@ -1,13 +1,43 @@
 ﻿@model Domain.Entities.Movie
 
-<div class="item">
-    @if (Model.ImageData != null)
-    {
-        <div style="float: left; margin-right: 20px">
-            <img width="150" height="300" src="@Url.Action("GetImage", "Movie", new { Model.MovieID })" />
+<div class="col-md-3 col-sm-6 col-xs-offset-3 col-xs-6 MovieBlock">
+    <div class="Movie">
+        <div class="imgBlock">
+            @if (Model.ImageData != null)
+            {
+                    <img class="MovieTitleImg" src="@Url.Action("GetImage", "Movie", new { Model.MovieID })" />
+
+            } else {
+                    <img class="MovieTitleImg" src="https://st.kp.yandex.net/images/film_iphone/iphone360_318.jpg" alt="Alternate Text" />
+            }
         </div>
-    }
-    <h3>@Model.Title</h3>
-    <h4>@Model.TitleEN</h4>
-    <p>@Model.Description</p>
+
+        <div class="MovieInfo">
+            <p class="textStyle">@Model.TitleEN</p>
+        </div>
+        <div class="text-center">
+            <input id="@Model.MovieID" type="text" class="rating rating-loading pull-right" value="4.8" data-min="0" data-max="10" data-step="0.1" data-size="xs" readonly="false" data-show-clear="false" data-show-caption="false">       
+        </div>
+
+        <div class="RatingBlock">
+            <span>KP: @Model.RatingKP</span>
+            <span>DMB: @Model.RatingIMDB</span>
+            <span>IMDB: @Model.RatingIMDB</span>
+        </div>
+    </div>   
 </div>
+
+<script> 
+    console.log(@Model.RatingKP);
+    var a = 2.5;
+    console.log("a", a);
+</script>
+
+
+@*<script 
+        src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+</script>*@
+
+@*<script>
+                $("#@Model.MovieID").rating();
+</script>*@

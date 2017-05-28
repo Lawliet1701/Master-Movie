@@ -54,6 +54,31 @@ namespace WebUI.Controllers
                 return null;
             }
         }
+        
+
+        public ViewResult Main(string category, int page = 1)
+        {
+            MoviesListViewModel model = new MoviesListViewModel
+            {
+                Movies = repository.Movies
+                .Where(p => category == null || p.PremiereDate.Year.ToString() == category)
+                .OrderBy(p => p.MovieID)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = category == null ?
+                        repository.Movies.Count() :
+                        repository.Movies.Where(e => e.PremiereDate.Year.ToString() == category).Count()
+                },
+                CurrentYearCategory = category
+            };
+
+            return View(model);
+        }
+        
 
     }
 }
