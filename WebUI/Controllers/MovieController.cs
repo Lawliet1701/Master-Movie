@@ -21,10 +21,17 @@ namespace WebUI.Controllers
 
         public ViewResult List(string category, int page = 1)
         {
+            int decade = -1;
+
+            if (category != null)
+            {
+                decade = int.Parse(category);
+            }
+
             MoviesListViewModel model = new MoviesListViewModel
             {
                 Movies = repository.Movies
-                .Where(p => category == null || p.PremiereDate.Year.ToString() == category)
+                .Where(p => category == null || (p.PremiereDate.Year >= decade && p.PremiereDate.Year < decade + 10))
                 .OrderBy(p => p.MovieID)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
@@ -34,7 +41,7 @@ namespace WebUI.Controllers
                     ItemsPerPage = PageSize,
                     TotalItems = category == null ?
                         repository.Movies.Count() :
-                        repository.Movies.Where(e => e.PremiereDate.Year.ToString() == category).Count()
+                        repository.Movies.Where(e => (e.PremiereDate.Year >= decade && e.PremiereDate.Year < decade + 10)).Count()
                 },
                 CurrentYearCategory = category
             };

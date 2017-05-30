@@ -31,12 +31,12 @@ namespace WebUI
             );
 
             routes.MapRoute(null,
-                "{category}",
+                "{category}s",
                 new { controller = "Movie", action = "List", page = 1 }
             );
 
             routes.MapRoute(null,
-                "{category}/Page{page}",
+                "{category}s/Page{page}",
                 new { controller = "Movie", action = "List" },
                 new { page = @"\d+" }
             );

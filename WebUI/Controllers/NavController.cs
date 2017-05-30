@@ -21,9 +21,10 @@ namespace WebUI.Controllers
             ViewBag.SelectedCategory = category;
 
             IEnumerable<string> categories = repository.Movies
-                .Select(x => x.PremiereDate.Year.ToString())
+                .Select(x => (x.PremiereDate.Year - x.PremiereDate.Year % 10).ToString())
                 .Distinct()
                 .OrderBy(x => x);
+
             return PartialView(categories);
         }
     }
