@@ -11,5 +11,6 @@ namespace Domain.Concrete
     public class EFDbContext : DbContext
     {
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<UsersMovie> UsersMovies { get; set; }
     }
 }

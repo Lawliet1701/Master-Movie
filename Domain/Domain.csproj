@@ -72,6 +72,7 @@
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFMovieRepository.cs" />
     <Compile Include="Entities\Movie.cs" />
+    <Compile Include="Entities\UsersMovie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

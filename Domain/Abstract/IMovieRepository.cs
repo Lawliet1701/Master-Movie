@@ -10,6 +10,7 @@ namespace Domain.Abstract
     public interface IMovieRepository
     {
         IQueryable<Movie> Movies { get; }
+        IQueryable<UsersMovie> UsersMovies { get; }
         void SaveMovie(Movie movie);
         Movie DeleteMovie(int movieID);
     }
