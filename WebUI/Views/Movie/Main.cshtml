@@ -12,6 +12,10 @@
 
 }
 
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Main", new { page = x, category = Model.CurrentYearCategory }))
+</div>
+
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/star-rating")
 

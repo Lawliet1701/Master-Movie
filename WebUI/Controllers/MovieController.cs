@@ -12,7 +12,7 @@ namespace WebUI.Controllers
     public class MovieController : Controller
     {
         private IMovieRepository repository;
-        public int PageSize = 3;
+        public int PageSize = 16;
 
         public MovieController(IMovieRepository movieRepository)
         {
