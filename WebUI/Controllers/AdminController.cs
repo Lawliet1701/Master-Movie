@@ -18,9 +18,12 @@ namespace WebUI.Controllers
             repository = repo;
         }
 
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var movies = repository.Movies;
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CurrentFilter = searchString;
 
             ViewBag.IDSortParam = String.IsNullOrEmpty(sortOrder) || sortOrder == "id_desc" ? "id" : "id_desc";
             ViewBag.TitleSortParam = sortOrder == "title" ? "title_desc" : "title";
@@ -31,7 +34,12 @@ namespace WebUI.Controllers
             ViewBag.IMDBSortParam = sortOrder == "imdb" ? "imdb_desc" : "imdb";
             ViewBag.PremiereDateSortParam = sortOrder == "premiere" ? "premiere_desc" : "premiere";
 
-            switch(sortOrder)
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+
+            switch (sortOrder)
             {
                 case "title": movies = movies.OrderBy(s => s.Title); break;
                 case "title_desc": movies = movies.OrderByDescending(s => s.Title); break;

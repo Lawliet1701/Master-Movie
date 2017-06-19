@@ -5,18 +5,27 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>All Movies</h2>
+<h2>All Movies (@Model.Count())</h2>
+
+@using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+{
+    <p>
+        @Html.Hidden("SortOrder", ViewBag.CurrentSort as string)
+        Find by title: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
 
 <table class="Grid">
     <tr>
-        <th>@Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam })</th>
-        <th>@Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitleSortParam })</th>
-        <th class="NumericCol">@Html.ActionLink("Premiere Date", "Index", new { sortOrder = ViewBag.PremiereDateSortParam })</th>
-        <th class="NumericCol">@Html.ActionLink("Length", "Index", new { sortOrder = ViewBag.LengthSortParam })</th>
-        <th class="NumericCol">@Html.ActionLink("Age Limit", "Index", new { sortOrder = ViewBag.AgeLimitSortParam })</th>
-        <th class="NumericCol">@Html.ActionLink("Budget", "Index", new { sortOrder = ViewBag.BudgetSortParam })</th>
-        <th class="NumericCol">@Html.ActionLink("KP", "Index", new { sortOrder = ViewBag.KPSortParam })</th>
-        <th class="NumericCol">@Html.ActionLink("IMDB", "Index", new { sortOrder = ViewBag.IMDBSortParam })</th>
+        <th>@Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, searchString = ViewBag.CurrentFilter })</th>
+        <th>@Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitleSortParam, searchString = ViewBag.CurrentFilter })</th>
+        <th class="NumericCol">@Html.ActionLink("Premiere Date", "Index", new { sortOrder = ViewBag.PremiereDateSortParam, searchString = ViewBag.CurrentFilter })</th>
+        <th class="NumericCol">@Html.ActionLink("Length", "Index", new { sortOrder = ViewBag.LengthSortParam, searchString = ViewBag.CurrentFilter })</th>
+        <th class="NumericCol">@Html.ActionLink("Age Limit", "Index", new { sortOrder = ViewBag.AgeLimitSortParam, searchString = ViewBag.CurrentFilter })</th>
+        <th class="NumericCol">@Html.ActionLink("Budget", "Index", new { sortOrder = ViewBag.BudgetSortParam, searchString = ViewBag.CurrentFilter })</th>
+        <th class="NumericCol">@Html.ActionLink("KP", "Index", new { sortOrder = ViewBag.KPSortParam, searchString = ViewBag.CurrentFilter })</th>
+        <th class="NumericCol">@Html.ActionLink("IMDB", "Index", new { sortOrder = ViewBag.IMDBSortParam, searchString = ViewBag.CurrentFilter })</th>
         <th class="NumericCol">MS</th>
         <th></th>
     </tr>
