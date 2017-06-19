@@ -18,9 +18,40 @@ namespace WebUI.Controllers
             repository = repo;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(repository.Movies);
+            var movies = repository.Movies;
+
+            ViewBag.IDSortParam = String.IsNullOrEmpty(sortOrder) || sortOrder == "id_desc" ? "id" : "id_desc";
+            ViewBag.TitleSortParam = sortOrder == "title" ? "title_desc" : "title";
+            ViewBag.LengthSortParam = sortOrder == "length" ? "length_desc" : "length";
+            ViewBag.AgeLimitSortParam = sortOrder == "agelimit" ? "agelimit_desc" : "agelimit";
+            ViewBag.BudgetSortParam = sortOrder == "budget" ? "budget_desc" : "budget";
+            ViewBag.KPSortParam = sortOrder == "kp" ? "kp_desc" : "kp";
+            ViewBag.IMDBSortParam = sortOrder == "imdb" ? "imdb_desc" : "imdb";
+            ViewBag.PremiereDateSortParam = sortOrder == "premiere" ? "premiere_desc" : "premiere";
+
+            switch(sortOrder)
+            {
+                case "title": movies = movies.OrderBy(s => s.Title); break;
+                case "title_desc": movies = movies.OrderByDescending(s => s.Title); break;
+                case "id": movies = movies.OrderBy(s => s.MovieID); break;
+                case "id_desc": movies = movies.OrderByDescending(s => s.MovieID); break;
+                case "length": movies = movies.OrderBy(s => s.Length); break;
+                case "length_desc": movies = movies.OrderByDescending(s => s.Length); break;
+                case "agelimit": movies = movies.OrderBy(s => s.RatingAgeLimit); break;
+                case "agelimit_desc": movies = movies.OrderByDescending(s => s.RatingAgeLimit); break;
+                case "budget": movies = movies.OrderBy(s => s.Budget); break;
+                case "budget_desc": movies = movies.OrderByDescending(s => s.Budget); break;
+                case "kp": movies = movies.OrderBy(s => s.RatingKP); break;
+                case "kp_desc": movies = movies.OrderByDescending(s => s.RatingKP); break;
+                case "imdb": movies = movies.OrderBy(s => s.RatingIMDB); break;
+                case "imdb_desc": movies = movies.OrderByDescending(s => s.RatingIMDB); break;
+                case "premiere": movies = movies.OrderBy(s => s.PremiereDate); break;
+                case "premiere_desc": movies = movies.OrderByDescending(s => s.PremiereDate); break;
+            }
+
+            return View(movies);
         }
 
         public ViewResult Edit(int movieId)
