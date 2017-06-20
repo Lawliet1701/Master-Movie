@@ -1,4 +1,5 @@
 ﻿using Domain.Abstract;
+using Domain.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -66,15 +67,14 @@ namespace WebUI.Controllers
 
             Dictionary<int, byte> currentUsersRatings = UsersMovies.Where(u => u.UserID == currentUser.Id).ToDictionary(x => x.MovieID, x => x.Rating);
 
-            List<Dictionary<int, byte>> allUsersRatings = new List<Dictionary<int, byte>>();
+            //List<Dictionary<int, byte>> allUsersRatings = new List<Dictionary<int, byte>>();
 
-            var allUsers = Users.Where(u => u.Id != currentUser.Id).Select(u => u.Id);
+            List<User> allUsers = Users.Where(u => u.Id != currentUser.Id).Select(u => new User { UserID = u.Id, UserName = u.UserName}).ToList();
 
-            foreach (string id in allUsers)
+            foreach (User user in allUsers)
             {
-                allUsersRatings.Add(UsersMovies.Where(u => u.UserID == id).ToDictionary(x => x.MovieID, x => x.Rating));
+                user.Ratings = UsersMovies.Where(u => u.UserID == user.UserID).ToDictionary(x => x.MovieID, x => x.Rating);
             }
-
 
 
             double totalSumA = 0;
@@ -87,13 +87,16 @@ namespace WebUI.Controllers
             totalSumA = Math.Sqrt(totalSumA);
 
 
+            double totalSim = 0;
 
-            foreach (Dictionary<int, byte> dict in allUsersRatings)
+            Dictionary<int, double> prediction = new Dictionary<int, double>();
+
+            foreach (User user in allUsers)
             {
 
                 double totalSumB = 0;
 
-                foreach (KeyValuePair<int, byte> innerPair in dict)
+                foreach (KeyValuePair<int, byte> innerPair in user.Ratings)
                 {
                     totalSumB += Math.Pow(innerPair.Value, 2);
                 }
@@ -105,20 +108,80 @@ namespace WebUI.Controllers
                 foreach (KeyValuePair<int, byte> outerPair in currentUsersRatings)     // ratings of current user
                 {
 
-                    if (dict.ContainsKey(outerPair.Key))
+                    if (user.Ratings.ContainsKey(outerPair.Key))
                     {
-                        sum += outerPair.Value * dict[outerPair.Key];
+                        sum += outerPair.Value * user.Ratings[outerPair.Key];
                     }
 
                 }
 
-                double similarity = sum / (totalSumA + totalSumB);
+                double similarity = sum / (totalSumA * totalSumB);
 
-                Debug.WriteLine("SIM : " + similarity );
+                Debug.WriteLine(user.UserName + " : " + similarity);
+
+
+                if (similarity > 0.1)                                             // filtering users by similarity threshold
+                {
+
+                    totalSim += similarity;
+
+
+                    foreach (KeyValuePair<int, byte> pair in user.Ratings)
+                    {
+                        double predValue = pair.Value * similarity;
+
+                        if (prediction.ContainsKey(pair.Key))                    // if this movie already exists, add value  
+                        {
+                            prediction[pair.Key] += predValue;
+                        }
+                        else if (!currentUsersRatings.ContainsKey(pair.Key))     // if current user didn't see this movie
+                        {
+                            prediction.Add(pair.Key, predValue);
+                        }
+
+                    }
+
+                }
 
             }
 
-            return View();
+            var keys = new List<int>(prediction.Keys);
+            foreach (int key in keys)
+            {
+                prediction[key] /= totalSim;
+            }
+                                                                                    // sort predictions by value
+            var items = from pair in prediction                
+                        orderby pair.Value descending
+                        select pair;
+
+            //foreach (KeyValuePair<int, double> pair in items)
+            //{
+            //    if (pair.Value > 6)
+            //    {
+            //        Debug.WriteLine("{0} : {1}", pair.Key, pair.Value);
+            //    }
+            //}
+
+            List<MoviePredict> result = new List<MoviePredict>();
+
+            foreach (KeyValuePair<int, double> pair in items)
+            {
+                if (pair.Value > 5)
+                {
+
+                    MoviePredict mp = new MoviePredict()
+                    {
+                        Movie = (Movie)repository.Movies.Where(s => s.MovieID == pair.Key).FirstOrDefault(),
+                        Prediction = pair.Value
+                    };
+
+                    result.Add(mp);
+                }
+                
+            }
+
+            return View(result);
         }
 
     }

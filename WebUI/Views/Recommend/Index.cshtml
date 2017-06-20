@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<WebUI.Models.UserMovieModel>*@
+﻿@model IEnumerable<WebUI.Models.MoviePredict>
 
 @{
     ViewBag.Title = "Index";
@@ -7,12 +7,8 @@
 
 <h2>Index</h2>
 
-
-
-@*@foreach (var usermovie in Model)
+@foreach (var item in Model)
 {
-    <h3>@usermovie.UserName</h3>
-    <h3>@usermovie.Movie</h3>
-    <h3>@usermovie.Rating</h3>
-    <br />
-}*@
+    <p>@item.Movie.Title</p>
+    <p>@item.Prediction</p>
+}

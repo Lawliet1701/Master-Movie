@@ -5,14 +5,13 @@ using System.Web;
 
 namespace WebUI.Models
 {
-    public class UserMovieModel
+    public class User
     {
+        public string UserID { get; set; }
 
         public string UserName { get; set; }
 
-        public string Movie { get; set; }
-
-        public Byte Rating { get; set; }
+        public Dictionary<int, byte> Ratings { get; set; }
 
     }
 }
