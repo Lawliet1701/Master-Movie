@@ -5,16 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="row">
+    @foreach (var p in Model.Movies)
+    {
+        Html.RenderPartial("MovieSummary", p);
 
-@foreach (var p in Model.Movies)
-{
-    Html.RenderPartial("MovieSummary", p);
-
-}
-
-<div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Main", new { page = x, category = Model.CurrentYearCategory }))
+    }
 </div>
+
+    <div class="pager">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Main", new { page = x, category = Model.CurrentYearCategory }))
+    </div>
+
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/star-rating")
