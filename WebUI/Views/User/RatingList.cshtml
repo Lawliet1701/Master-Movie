@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WebUI.Models.RatingListViewModel>
+
+@{
+    ViewBag.Title = "My ratings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rating List</h2>
+
+@foreach (var item in Model)
+{
+    //Change this view
+    <div class="col-md-3 col-sm-6 col-xs-offset-3 col-xs-6 MovieBlock">
+        <div class="Movie">
+            <div class="imgBlock">
+               <img class="MovieTitleImg" src="@String.Format("/Content/Images/Posters/iphone360_{0}.jpg", item.Movie.KPID)" alt="Alternative Text" />
+            </div>
+
+            <div class="MovieInfo">
+                <p class="textStyle">@item.Movie.Title</p>
+            </div>
+            <div class="text-center">
+                <p class="textStyle">@item.Rating</p>
+            </div>
+
+            <div class="RatingBlock">
+                <span>Rating: @item.Rating</span>
+            </div>
+        </div>
+    </div>
+   
+}
