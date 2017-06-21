@@ -1,13 +1,16 @@
 ﻿$(document).ready(function () {
 
-    $("#rate").click(function () {
+    $
+
+    $(".empty-stars").click(function () {
+        console.log("111");
         $.post("/Movie/AddRating",
             {
-                movieID: 162,
-                rating: 7
+                movieID: this.id,
+                rating: this.value
             },
             function (data, status) {
-                alert("Status: " + status);
+                console.log("Status: " + status);
             });
     });
 
