@@ -307,6 +307,7 @@
     <Content Include="Scripts\BSR\themes\krajee-uni\theme.js" />
     <Content Include="Scripts\BSR\themes\krajee-uni\theme.min.css" />
     <Content Include="Scripts\BSR\themes\krajee-uni\theme.min.js" />
+    <Content Include="Scripts\Custom\app.js" />
     <Content Include="Scripts\jquery-2.2.1.js" />
     <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />

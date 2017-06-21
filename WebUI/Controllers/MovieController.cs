@@ -1,7 +1,9 @@
 ﻿using Domain.Abstract;
 using Domain.Entities;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -84,6 +86,35 @@ namespace WebUI.Controllers
             };
 
             return View(model);
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public EmptyResult AddRating(int movieID, byte rating)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var usersMovie = repository.UsersMovies.FirstOrDefault(p => p.UserID == userId && p.MovieID == movieID);
+
+            var userMovieId = usersMovie != null ? usersMovie.UserMovieID : 0; 
+
+            if (rating > 0 && rating <= 10)
+            {
+                if ( repository.Movies.FirstOrDefault(p => p.MovieID == movieID) != null)
+                {
+                    UsersMovie userMovie = new UsersMovie()
+                    {
+                        UserMovieID = userMovieId,
+                        MovieID = movieID,
+                        UserID = userId,
+                        Rating = rating
+                    };
+
+                    repository.SaveUserMovie(userMovie);
+                }
+            }
+            return null;
         }
         
 

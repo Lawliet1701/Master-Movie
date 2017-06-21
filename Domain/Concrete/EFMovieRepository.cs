@@ -2,6 +2,7 @@
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,24 @@ namespace Domain.Concrete
                 context.SaveChanges();
             }
             return dbEntry;
+        }
+
+        public void SaveUserMovie(UsersMovie userMovie)
+        {
+            if (userMovie.UserMovieID == 0)
+            {
+                context.UsersMovies.Add(userMovie);
+            }
+            else
+            {
+                UsersMovie dbEntry = context.UsersMovies.Find(userMovie.UserMovieID);
+
+                if (dbEntry != null)
+                {
+                    dbEntry.Rating = userMovie.Rating;
+                }
+            }
+            context.SaveChanges();
         }
     }
 }

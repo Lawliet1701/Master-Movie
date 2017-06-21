@@ -16,9 +16,10 @@
 
     <div class="pager">
         @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentYearCategory}))
-    </div>
+    </div>  
 </div>
 
+<input type="button" id="rate" value="RATE" />   @*this should be removed*@ 
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/star-rating")

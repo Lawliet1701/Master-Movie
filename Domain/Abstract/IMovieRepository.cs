@@ -12,6 +12,7 @@ namespace Domain.Abstract
         IQueryable<Movie> Movies { get; }
         IQueryable<UsersMovie> UsersMovies { get; }
         void SaveMovie(Movie movie);
+        void SaveUserMovie(UsersMovie userMovie);
         Movie DeleteMovie(int movieID);
     }
 
