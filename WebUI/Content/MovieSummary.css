@@ -21,12 +21,12 @@
 
 .imgBlock {
     overflow: hidden;
-    width: 100%;
-    height: 320px;
+    width: auto;
+    height: 380px;
 }
 
 .MovieTitleImg {
-    max-width: 100%;
+    width: 100%;
     height: 100%;
     box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.4);
 }

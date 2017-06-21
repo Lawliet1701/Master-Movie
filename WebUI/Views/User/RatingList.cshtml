@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Rating List</h2>
+<div class="pageTitle col-md-12">
+    <p class="pageTitleText">Rating List</p>
+</div>
 
 @foreach (var item in Model)
 {
@@ -20,13 +22,16 @@
                 <p class="textStyle">@item.Movie.Title</p>
             </div>
             <div class="text-center">
-                <p class="textStyle">@item.Rating</p>
+                <input id="@item.Movie.MovieID" type="text" class="rating rating-loading pull-right" value="@item.Rating" data-min="0" data-max="10" data-step="0.1" data-size="xs" readonly="false" data-show-clear="false" data-show-caption="false">
             </div>
 
-            <div class="RatingBlock">
+            @*<div class="RatingBlock">
                 <span>Rating: @item.Rating</span>
-            </div>
+            </div>*@
         </div>
     </div>
    
 }
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/star-rating")

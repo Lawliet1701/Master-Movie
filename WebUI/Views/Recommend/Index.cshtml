@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Your recommendations</h2>
+<div class="pageTitle col-md-12">
+    <p class="pageTitleText">Your recommendations</p>
+</div>
 
 @foreach (var item in Model) {
     <div class="col-md-3 col-sm-6 col-xs-offset-3 col-xs-6 MovieBlock">
@@ -25,20 +27,18 @@
             <div class="MovieInfo">
                 <p class="textStyle">@item.Movie.Title</p>
             </div>
-            <div class="text-center">
-                <input id="@item.Movie.MovieID" type="text" class="rating rating-loading pull-right" value="@item.Prediction" data-min="0" data-max="10" data-step="0.1" data-size="xs" readonly="false" data-show-clear="false" data-show-caption="false">
+            <div class="text-center UserRating">
+                <span>It can be your rating : @item.Prediction.ToString().Replace(",", ".").Substring(0, 3)</span>
+                @*<input id="@item.Movie.MovieID" type="text" class="rating rating-loading pull-right" value="@item.Prediction.ToString().Replace(",",".")" data-min="0" data-max="10" data-step="0.1" data-size="xs" readonly="false" data-show-clear="false" data-show-caption="false">*@
             </div>
 
-            <div class="RatingBlock">
-                <span>KP: @item.Movie.RatingKP</span>
-                <span>DMB: @item.Movie.RatingIMDB</span>
-                <span>IMDB: @item.Movie.RatingIMDB</span>
+            <div class="RatingBlock">                
+                <span>KP: @item.Movie.RatingKP.ToString().Replace(",", ".")</span>
+                <span>DMB: @item.Movie.RatingIMDB.ToString().Replace(",", ".")</span>
+                <span>IMDB: @item.Movie.RatingIMDB.ToString().Replace(",", ".")</span>
             </div>
         </div>
     </div>
-    @*<p>@item.Movie.MovieID</p>
-    <p>@item.Movie.Title</p>
-    <p>@item.Prediction</p>*@
 }
 
 @Scripts.Render("~/bundles/jquery")
