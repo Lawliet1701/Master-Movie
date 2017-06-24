@@ -18,10 +18,11 @@
         Html.RenderPartial("MovieSummary", p);
     }
 
-    <div class="pager">
-        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentYearCategory}))
-    </div>  
+
 </div>
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentYearCategory }))
+</div>  
 
 <input type="button" id="rate" value="RATE" />   @*this should be removed*@ 
 
