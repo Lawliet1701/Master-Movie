@@ -26,6 +26,13 @@
                     <li>@Html.ActionLink("Recommendations", "Index", "Recommend")</li>
                     <li>@Html.ActionLink("My Ratings", "RatingList", "User")</li>
                     <li>@Html.ActionLink("Admin Panel", "Index", "Admin")</li>
+                    <li>
+                        @using (Html.BeginForm("List", "Movie", FormMethod.Get, new { @class = "search-form" }))
+                        {
+                            @Html.TextBox("SearchString", ViewBag.SearchString as string)
+                            <input type="submit" value="Search" />
+                        }
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

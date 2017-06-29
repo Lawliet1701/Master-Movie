@@ -21,8 +21,10 @@ namespace WebUI.Controllers
             this.repository = movieRepository;
         }
 
-        public ViewResult List(string category, int page = 1)
+        public ViewResult List(string searchString, string category, int page = 1)
         {
+            ViewBag.SearchString = searchString;
+
             int decade = -1;
 
             if (category != null)
@@ -30,9 +32,16 @@ namespace WebUI.Controllers
                 decade = int.Parse(category);
             }
 
+            var movies = repository.Movies;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                 movies = movies.Where(s => s.Title.Contains(searchString) || s.TitleEN.Contains(searchString));
+            }
+
             MoviesListViewModel model = new MoviesListViewModel
             {
-                Movies = repository.Movies
+                Movies = movies
                 .Where(p => category == null || (p.PremiereDate.Year >= decade && p.PremiereDate.Year < decade + 10))
                 .OrderBy(p => p.MovieID)
                 .Skip((page - 1) * PageSize)
@@ -42,8 +51,8 @@ namespace WebUI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = category == null ?
-                        repository.Movies.Count() :
-                        repository.Movies.Where(e => (e.PremiereDate.Year >= decade && e.PremiereDate.Year < decade + 10)).Count()
+                        movies.Count() :
+                        movies.Where(e => (e.PremiereDate.Year >= decade && e.PremiereDate.Year < decade + 10)).Count()
                 },
                 CurrentYearCategory = category
             };

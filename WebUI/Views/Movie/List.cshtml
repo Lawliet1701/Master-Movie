@@ -21,7 +21,7 @@
 
 </div>
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentYearCategory }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentYearCategory, searchString = ViewBag.SearchString }))
 </div>  
 
 <input type="button" id="rate" value="RATE" />   @*this should be removed*@ 

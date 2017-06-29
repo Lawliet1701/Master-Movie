@@ -132,3 +132,35 @@ textarea {
     background-color: orange;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
+
+.search-form {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search-form input[type=text] {
+   display: inline-block;
+   width: 150px;
+   -webkit-box-sizing: content-box;
+   -moz-box-sizing: content-box;
+   box-sizing: content-box;
+   padding: 5px 20px;
+   border: 1px solid #b7b7b7;
+   -webkit-border-radius: 10px;
+   border-radius: 10px;
+   font: normal 16px/normal "Times New Roman", Times, serif;
+   color: rgba(42,43,43,1);
+   -o-text-overflow: clip;
+   text-overflow: clip;
+   background: rgba(226,226,226,1);
+   webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+   box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+   text-shadow: 1px 1px 0 rgba(186,186,186,0.79);
+
+}
+
+.search-form input[type=submit] {
+    display: inline-block;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
