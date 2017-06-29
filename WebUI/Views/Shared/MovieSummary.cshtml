@@ -1,25 +1,25 @@
 ﻿@model Domain.Entities.Movie
 
 <div class="col-md-3 col-sm-6 col-xs-offset-3 col-xs-6 MovieBlock">
-    <div class="Movie">
-        <div class="imgBlock">
+    <div class="movie">
+        <div class="img-block">
             @if (Model.ImageData != null)
             {
-                    <img class="MovieTitleImg" src="@Url.Action("GetImage", "Movie", new { Model.MovieID })" />
+                    <img class="movie-title-img" src="@Url.Action("GetImage", "Movie", new { Model.MovieID })" />
 
             } else {
-                    <img class="MovieTitleImg" src="@String.Format("/Content/Images/Posters/iphone360_{0}.jpg", Model.KPID)" alt="Alternative Text" />
+                    <img class="movie-title-img" src="@String.Format("/Content/Images/Posters/iphone360_{0}.jpg", Model.KPID)" alt="Alternative Text" />
             }
         </div>
 
-        <div class="MovieInfo">
-            <p class="textStyle">@Model.Title</p>
+        <div class="movie-info">
+            <p class="text-style">@Model.Title</p>
         </div>
         <div class="text-center">
             <input id="@Model.MovieID" type="text" class="rating rating-loading pull-right" value="@Model.RatingKP.ToString().Replace(",",".")" data-min="0" data-max="10" data-step="0.1" data-size="xs" data-show-clear="false" data-show-caption="false">       
         </div>
 
-        <div class="RatingBlock">
+        <div class="rating-block">
             <span>KP: @Model.RatingKP.ToString().Replace(",", ".")</span>
             <span>IMDB: @Model.RatingIMDB.ToString().Replace(",", ".")</span>
         </div>

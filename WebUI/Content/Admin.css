@@ -24,10 +24,10 @@ TABLE.Grid {
     width: 100%;
 }
 
-    TABLE.Grid TH.NumericCol, Table.Grid TD.NumericCol {
-        text-align: right;
-        padding-right: 1em;
-    }
+TABLE.Grid TH.NumericCol, Table.Grid TD.NumericCol {
+    text-align: right;
+    padding-right: 1em;
+}
 
 FORM {
     margin-bottom: 0px;
@@ -71,9 +71,9 @@ FORM {
     font-weight: bold;
 }
 
-    .editor-label:after {
-        content: ":"
-    }
+.editor-label:after {
+    content: ":"
+}
 
 .text-box {
     width: 25em;

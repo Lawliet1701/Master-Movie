@@ -5,21 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="pageTitle col-md-12">
-    <p class="pageTitleText">Rating List</p>
+<div class="page-title col-md-12">
+    <p class="page-title-text">Rating List</p>
 </div>
 
 @foreach (var item in Model)
 {
     //Change this view
     <div class="col-md-3 col-sm-6 col-xs-offset-3 col-xs-6 MovieBlock">
-        <div class="Movie2">
-            <div class="imgBlock">
-               <img class="MovieTitleImg" src="@String.Format("/Content/Images/Posters/iphone360_{0}.jpg", item.Movie.KPID)" alt="Alternative Text" />
+        <div class="movie2">
+            <div class="img-block">
+               <img class="movie-title-img" src="@String.Format("/Content/Images/Posters/iphone360_{0}.jpg", item.Movie.KPID)" alt="Alternative Text" />
             </div>
 
-            <div class="MovieInfo">
-                <p class="textStyle">@item.Movie.Title</p>
+            <div class="movie-info">
+                <p class="text-style">@item.Movie.Title</p>
             </div>
             <div class="text-center">
                 <input id="@item.Movie.MovieID" type="text" class="rating rating-loading pull-right" value="@item.Rating" data-min="0" data-max="10" data-step="0.1" data-size="xs" readonly="false" data-show-clear="false" data-show-caption="false">

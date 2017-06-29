@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
 
-    $
-
     $(".empty-stars").click(function () {
         console.log("111");
         $.post("/Movie/AddRating",

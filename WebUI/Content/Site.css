@@ -113,12 +113,12 @@ textarea {
     background-color: #666;
 }
 
-.pageTitle{
+.page-title{
     margin-top: 20px;
     /*background-color: cornflowerblue;*/
 }
 
-.pageTitleText {
+.page-title-text {
     background-color: #3984ef;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -127,7 +127,7 @@ textarea {
     color: white;
 }
 
-.UserRating {
+.user-rating {
     /*text-transform: uppercase;*/
     background-color: orange;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);

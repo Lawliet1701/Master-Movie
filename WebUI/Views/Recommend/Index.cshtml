@@ -5,34 +5,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="pageTitle col-md-12">
-    <p class="pageTitleText">Your recommendations</p>
+<div class="page-title col-md-12">
+    <p class="page-title-text">Your recommendations</p>
 </div>
 
 @foreach (var item in Model) {
     <div class="col-md-3 col-sm-6 col-xs-offset-3 col-xs-6 MovieBlock">
-        <div class="Movie2">
-            <div class="imgBlock">
+        <div class="movie2">
+            <div class="img-block">
                 @if (@item.Movie.ImageData != null)
                 {
-                    <img class="MovieTitleImg" src="@Url.Action("GetImage", "Movie", new { @item.Movie.MovieID })" />
+                    <img class="movie-title-img" src="@Url.Action("GetImage", "Movie", new { @item.Movie.MovieID })" />
 
                 }
                 else
                 {
-                    <img class="MovieTitleImg" src="@String.Format("/Content/Images/Posters/iphone360_{0}.jpg", @item.Movie.KPID)" alt="Alternative Text" />
+                    <img class="movie-title-img" src="@String.Format("/Content/Images/Posters/iphone360_{0}.jpg", @item.Movie.KPID)" alt="Alternative Text" />
                 }
             </div>
 
-            <div class="MovieInfo">
-                <p class="textStyle">@item.Movie.Title</p>
+            <div class="movie-info">
+                <p class="text-style">@item.Movie.Title</p>
             </div>
-            <div class="text-center UserRating">
+            <div class="text-center user-rating">
                 <span>It can be your rating : @item.Prediction.ToString().Replace(",", ".").Substring(0, 3)</span>
                 @*<input id="@item.Movie.MovieID" type="text" class="rating rating-loading pull-right" value="@item.Prediction.ToString().Replace(",",".")" data-min="0" data-max="10" data-step="0.1" data-size="xs" readonly="false" data-show-clear="false" data-show-caption="false">*@
             </div>
 
-            <div class="RatingBlock">                
+            <div class="rating-block">                
                 <span>KP: @item.Movie.RatingKP.ToString().Replace(",", ".")</span>
                 <span>DMB: @item.Movie.RatingIMDB.ToString().Replace(",", ".")</span>
                 <span>IMDB: @item.Movie.RatingIMDB.ToString().Replace(",", ".")</span>
